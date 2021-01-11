@@ -1,6 +1,6 @@
-NCC = /opt/nec/ve/bin/ncc
+NCC = ncc
 NCCFLAGS = -O3
-FTRACE = /opt/nec/ve/bin/ftrace
+FTRACE = ftrace
 
 CLANG = clang -target ve-linux
 CLFLAGS = -O3 -ffast-math -mvepacked
