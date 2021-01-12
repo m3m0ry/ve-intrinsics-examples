@@ -1,16 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int ftrace_region_begin(const char *id);
-int ftrace_region_end(const char *id);
-
-#define FTRACE(N,X)  do{                        \
-    ftrace_region_begin(N);                     \
-    X;                                          \
-    ftrace_region_end(N);                       \
-  } while(0)
-
-
 void daxpy(int n, double alpha, double *x, int incx,
            double *y, int incy);
 void daxpy_unr(int n, double alpha, double *x, int incx,
@@ -38,10 +28,10 @@ int main(int argc, char *argv[])
   }
 
   for (int i = 0; i < 100; i++)
-    FTRACE("daxpy", daxpy(n, 2.0, x, 1, y, 1));
+    daxpy(n, 2.0, x, 1, y, 1);
 
   for (int i = 0; i < 100; i++)
-    FTRACE("daxpy_unr", daxpy_unr(n, 2.0, x, 1, y, 1));
+    daxpy_unr(n, 2.0, x, 1, y, 1);
 
   free(x);
   free(y);
